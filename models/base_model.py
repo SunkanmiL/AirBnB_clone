@@ -42,7 +42,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) == 0:
-            storage.new()
+            storage.new(self)
             return
         for key, value in kwargs.items():
             if key == '__class__':
