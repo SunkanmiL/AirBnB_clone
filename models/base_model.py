@@ -23,8 +23,11 @@ class BaseModel:
 
     Methods
     -------
-        __init__(self, *args, **kwargs)
-
+        __init__(self, *args, **kwargs): Initializes an instance
+        save(self): Updates self.updated_at with the current datetime
+        to_dict(self): Returns a dictionary containing all keys/values
+                       of __dict__ of the instance
+        __str__(self): Returns the string representation of an instance
     """
 
     def __init__(self, *args, **kwargs):
