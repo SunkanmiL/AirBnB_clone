@@ -51,8 +51,6 @@ class BaseModel:
             if key == '__class__':
                 continue
             elif key == 'created_at' or key == 'updated_at':
-                #regx = "^.+-.+-.+T.+:.+:.+\..+$"
-                #if (re.match(regx, value) is N
                 dt_values = re.split('[-T:.]', value)
                 dt_values = [int(i) for i in dt_values]
                 dt_values = tuple(dt_values)
