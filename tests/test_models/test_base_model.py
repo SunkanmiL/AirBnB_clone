@@ -65,41 +65,76 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertIn('name', BaseModel(**kwargs).__dict__)
 
 
-    class TestBaseModel_save(unittest.TestCase):
-        """unittest class for testing the save method"""
+class TestBaseModel_save(unittest.TestCase):
+    """unittest class for testing the save method"""
 
-        def tearDown(self):
-            try:
-                os.remove("file.json")
-            except FileNotFoundError:
-                pass
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+        except FileNotFoundError:
+            pass
 
-        def test_one_arg(self):
-            base = BaseModel()
-            with self.assertRaises(TypeError):
-                base.save(3)
+    def test_one_arg(self):
+        base = BaseModel()
+        with self.assertRaises(TypeError):
+            base.save(3)
 
-        def test_None_arg(self):
-            base = BaseModel()
-            with self.assertRaises(TypeError):
-                base.save(None)
+    def test_None_arg(self):
+        base = BaseModel()
+        with self.assertRaises(TypeError):
+            base.save(None)
 
-        def test_updated_at_diff(self):
-            base = BaseModel()
-            before_save = base.updated_at
-            base.save()
-            after_save = base.updated_at
-            self.assertNotEqual(before_save, after_save)
+    def test_updated_at_diff(self):
+        base = BaseModel()
+        before_save = base.updated_at
+        base.save()
+        after_save = base.updated_at
+        self.assertNotEqual(before_save, after_save)
 
-        def test_saved_to_file(self):
-            base = BaseModel()
-            base.save()
-            self.assertTrue(os.path.exists("file.json") == True)
+    def test_saved_to_file(self):
+        base = BaseModel()
+        base.save()
+        self.assertTrue(os.path.exists("file.json") == True)
 
-    class TestBaseModel_to_dict(unittest.TestCase):
-        """unittest class to test the `to_dict(...)` method"""
+class TestBaseModel_to_dict(unittest.TestCase):
+    """unittest class to test the `to_dict(...)` method"""
 
-        def test_no_arg(self):
-            self.assertEqual(len(BaseModel().to_dict()), 3)
+    def setUp(self):
+        self.base = BaseModel()
 
-        def test_
+    def test_no_arg(self):
+        self.assertEqual(len(self.base.to_dict()), 4)
+
+    def test_one_arg(self):
+        with self.assertRaises(TypeError):
+            self.base.to_dict(3)
+
+    def test_None_arg(self):
+        with self.assertRaises(TypeError):
+            self.base.to_dict(None)
+
+    def test_stores_complete_attrLen(self):
+        kwargs = {None: 3, 'Age': 25}
+        base = BaseModel(**kwargs)
+        my_dict = base.to_dict()
+        self.assertEqual(len(my_dict), 6)
+
+    def test_stores_complete_attr(self):
+        kwargs = {'Name': 'Betty', 'Age': 25}
+        base = BaseModel(**kwargs)
+        my_dict = base.to_dict()
+        self.assertTrue('Age' in my_dict)
+
+    def test_stores_correct_class(self):
+        kwargs = {'Name': 'Betty', 'Age': 25, '__class__': 'int'}
+        base = BaseModel(**kwargs)
+        my_dict = base.to_dict()
+        self.assertTrue(my_dict['__class__'] == base.__class__.__name__)
+
+    def test_store_correct_date(self):
+        kwargs = {'Name': 'Betty', 'Age': 25, 'created_at': '20-10-20M
+                  20-10-20.23456'}
+        base = BaseModel(**kwargs)
+        my_dict = base.to_dict()
+        self.assertTrue(my_dict['created_at'] != '20-10-20M
+                        20-10-20.23456')
