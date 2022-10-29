@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Defines a class ``FileStorage``"""
 import json
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -35,9 +34,6 @@ class FileStorage:
         Args:
             obj (object): An instance of a class
         """
-        if not (isinstance(obj, BaseModel)):
-            return
-
         key = obj.__class__.__name__ + '.' + obj.id
         self.__objects[key] = obj.to_dict()
 
