@@ -143,4 +143,6 @@ class TestBaseModel_save(unittest.TestCase):
 
         self.assertNotEqual(my_dict_1, my_dict_2)
 
-    #def test_saves_correct_data
+
+if __name__ == "__main__":
+    unittest.main()

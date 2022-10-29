@@ -138,3 +138,7 @@ class TestBaseModel_to_dict(unittest.TestCase):
         my_dict = base.to_dict()
         self.assertTrue(my_dict['created_at'] != '20-10-20M
                         20-10-20.23456')
+
+
+if __name__ == "__main__":
+    unittest.main()
