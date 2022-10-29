@@ -57,11 +57,11 @@ class TestBaseModel_instantiation(unittest.TestCase):
         self.assertEqual(len(Basemodel(*args).__dict__), 3)
 
     def test_assign_kwargs_attrCount(self):
-        kwargs = {name="Betty", age=14}
+        kwargs = {name = "Betty", age = 14}
         self.assertEqual(len(BaseModel(**kwargs).__dict__), 5)
 
     def test_assign_kwargs(self):
-        kwargs = {name="Betty", age=14}
+        kwargs = {name = "Betty", age = 14}
         self.assertIn('name', BaseModel(**kwargs).__dict__)
 
 
@@ -94,7 +94,8 @@ class TestBaseModel_save(unittest.TestCase):
     def test_saved_to_file(self):
         base = BaseModel()
         base.save()
-        self.assertTrue(os.path.exists("file.json") == True)
+        self.assertTrue(os.path.exists("file.json") is True)
+
 
 class TestBaseModel_to_dict(unittest.TestCase):
     """unittest class to test the `to_dict(...)` method"""
