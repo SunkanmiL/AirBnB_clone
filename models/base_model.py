@@ -3,7 +3,6 @@
 import uuid
 import re
 from datetime import datetime
-from models import storage
 
 
 class BaseModel:
@@ -45,8 +44,10 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) == 0:
+            from .__init__ import storage
             storage.new(self)
             return
+
         for key, value in kwargs.items():
             if key == '__class__':
                 continue
@@ -60,6 +61,7 @@ class BaseModel:
     def save(self):
         """Updates self.updated_at with the current datetime"""
         self.updated_at = datetime.now()
+        from .__init__ import storage
         storage.new(self)
         storage.save()
 

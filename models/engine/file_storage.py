@@ -7,6 +7,7 @@ from models.city import City
 from models.place import Place
 from models.review import Review
 from models.state import State
+from models.user import User
 
 
 class FileStorage:
@@ -46,7 +47,7 @@ class FileStorage:
     def save(self):
         """Serializes @__objects to the JSON file (path: __file_path)"""
         my_dict = dict()
-        for key, value in FileStorage.__objects:
+        for key, value in FileStorage.__objects.items():
             my_dict[key] = value.to_dict()
 
         with open(self.__file_path, 'w', encoding='utf-8') as f:
@@ -63,16 +64,16 @@ class FileStorage:
         for key, value in my_dict.items():
             match value['__class__']:
                 case 'Amenity':
-                    FileStorage.__object[key] = Amenity(**value)
+                    FileStorage.__objects[key] = Amenity(**value)
                 case 'BaseModel':
-                    FileStorage.__object[key] = BaseModel(**value)
+                    FileStorage.__objects[key] = BaseModel(**value)
                 case 'City':
-                    FileStorage.__object[key] = City(**value)
+                    FileStorage.__objects[key] = City(**value)
                 case 'Review':
-                    FileStorage.__object[key] = Review(**value)
+                    FileStorage.__objects[key] = Review(**value)
                 case 'Place':
-                    FileStorage.__object[key] = Place(**value)
+                    FileStorage.__objects[key] = Place(**value)
                 case 'State':
-                    FileStorage.__object[key] = State(**value)
+                    FileStorage.__objects[key] = State(**value)
                 case 'User':
-                    FileStorage.__object[key] = User(**value)
+                    FileStorage.__objects[key] = User(**value)
