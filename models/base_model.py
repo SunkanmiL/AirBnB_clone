@@ -44,8 +44,8 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) == 0:
-            from models import storage
-            storage.new(self)
+            import models
+            models.storage.new(self)
             return
 
         for key, value in kwargs.items():
@@ -61,9 +61,8 @@ class BaseModel:
     def save(self):
         """Updates self.updated_at with the current datetime"""
         self.updated_at = datetime.now()
-        from models import storage
-        storage.new(self)
-        storage.save()
+        import models
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values of __dict__
