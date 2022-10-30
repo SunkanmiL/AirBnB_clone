@@ -40,23 +40,25 @@ class BaseModel:
                            representing the value of the attribute name
         """
 
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
         if len(kwargs) == 0:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
             models.storage.new(self)
-            return
-
-        for key, value in kwargs.items():
-            if key == '__class__':
-                continue
-            elif key == 'created_at' or key == 'updated_at':
-                dt_values = re.split('[-T:.]', value)
-                dt_values = [int(i) for i in dt_values]
-                dt_values = tuple(dt_values)
-                value = datetime(*dt_values)
-            setattr(self, key, value)
+        else:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue
+                if key == 'created_at' or key == 'updated_at':
+                    """
+                    dt_values = re.split('[-T:.]', value)
+                    dt_values = [int(i) for i in dt_values]
+                    dt_values = tuple(dt_values)
+                    value = datetime(*dt_values)
+                    """
+                    setattr(self, key, datetime.fromisoformat(value))
+                else:
+                    setattr(self, key, value)
 
     def save(self):
         """Updates self.updated_at with the current datetime"""
