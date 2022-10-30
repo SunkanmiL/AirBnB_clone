@@ -2,6 +2,7 @@
 """Defines a class ``BaseModel``"""
 import uuid
 import re
+import models
 from datetime import datetime
 
 
@@ -44,7 +45,6 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) == 0:
-            import models
             models.storage.new(self)
             return
 
@@ -61,7 +61,6 @@ class BaseModel:
     def save(self):
         """Updates self.updated_at with the current datetime"""
         self.updated_at = datetime.now()
-        import models
         models.storage.save()
 
     def to_dict(self):
