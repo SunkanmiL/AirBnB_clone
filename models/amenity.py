@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a class ``Amenity``"""
-from models.base_models import BaseModel
+from models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
