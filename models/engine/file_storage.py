@@ -58,22 +58,21 @@ class FileStorage:
         try:
             with open(self.__file_path, 'r', encoding='utf-8') as f:
                 my_dict = json.load(f)
+                for key, value in my_dict.items():
+                    match value['__class__']:
+                        case 'Amenity':
+                            FileStorage.__objects[key] = Amenity(**value)
+                        case 'BaseModel':
+                            FileStorage.__objects[key] = BaseModel(**value)
+                        case 'City':
+                            FileStorage.__objects[key] = City(**value)
+                        case 'Review':
+                            FileStorage.__objects[key] = Review(**value)
+                        case 'Place':
+                            FileStorage.__objects[key] = Place(**value)
+                        case 'State':
+                            FileStorage.__objects[key] = State(**value)
+                        case 'User':
+                            FileStorage.__objects[key] = User(**value)       
         except FileNotFoundError:
             return
-        
-        for key, value in my_dict.items():
-            match value['__class__']:
-                case 'Amenity':
-                    FileStorage.__objects[key] = Amenity(**value)
-                case 'BaseModel':
-                    FileStorage.__objects[key] = BaseModel(**value)
-                case 'City':
-                    FileStorage.__objects[key] = City(**value)
-                case 'Review':
-                    FileStorage.__objects[key] = Review(**value)
-                case 'Place':
-                    FileStorage.__objects[key] = Place(**value)
-                case 'State':
-                    FileStorage.__objects[key] = State(**value)
-                case 'User':
-                    FileStorage.__objects[key] = User(**value)
