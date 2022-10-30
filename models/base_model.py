@@ -44,7 +44,7 @@ class BaseModel:
         self.updated_at = datetime.now()
 
         if len(kwargs) == 0:
-            from .__init__ import storage
+            from models import storage
             storage.new(self)
             return
 
@@ -61,7 +61,7 @@ class BaseModel:
     def save(self):
         """Updates self.updated_at with the current datetime"""
         self.updated_at = datetime.now()
-        from .__init__ import storage
+        from models import storage
         storage.new(self)
         storage.save()
 
