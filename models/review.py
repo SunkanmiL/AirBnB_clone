@@ -11,6 +11,6 @@ class Review(BaseModel):
         text (str): Public class attribute for Review's text
     """
 
-     place_id = ""
+    place_id = ""
     user_id = ""
     text = ""
