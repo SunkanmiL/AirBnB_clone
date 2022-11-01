@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""Defines the User class."""
-from .base_model import BaseModel
+"""Defines the User class"""
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
@@ -12,7 +12,7 @@ class User(BaseModel):
         last_name (str): Public class attribute for User's last name
     """
 
-    email = ""
-    password = ""
-    first_name = ""
-    last_name = ""
+    email = ''
+    password = ''
+    first_name = ''
+    last_name = ''

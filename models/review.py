@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines the Review class"""
-from .base_model import BaseModel
+from models.base_model import BaseModel
 
 
 class Review(BaseModel):
@@ -11,6 +11,6 @@ class Review(BaseModel):
         text (str): Public class attribute for Review's text
     """
 
-    place_id = ""
+     place_id = ""
     user_id = ""
     text = ""

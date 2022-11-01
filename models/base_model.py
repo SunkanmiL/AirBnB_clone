@@ -2,6 +2,7 @@
 """Defines a class ``BaseModel``"""
 import uuid
 import re
+import models
 from datetime import datetime
 
 
@@ -39,31 +40,30 @@ class BaseModel:
                            representing the value of the attribute name
         """
 
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
-
         if len(kwargs) == 0:
-            from .__init__ import storage
-            storage.new(self)
-            return
-
-        for key, value in kwargs.items():
-            if key == '__class__':
-                continue
-            elif key == 'created_at' or key == 'updated_at':
-                dt_values = re.split('[-T:.]', value)
-                dt_values = [int(i) for i in dt_values]
-                dt_values = tuple(dt_values)
-                value = datetime(*dt_values)
-            setattr(self, key, value)
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
+            models.storage.new(self)
+        else:
+            for key, value in kwargs.items():
+                if key == '__class__':
+                    continue
+                if key == 'created_at' or key == 'updated_at':
+                    """
+                    dt_values = re.split('[-T:.]', value)
+                    dt_values = [int(i) for i in dt_values]
+                    dt_values = tuple(dt_values)
+                    value = datetime(*dt_values)
+                    """
+                    setattr(self, key, datetime.fromisoformat(value))
+                else:
+                    setattr(self, key, value)
 
     def save(self):
         """Updates self.updated_at with the current datetime"""
         self.updated_at = datetime.now()
-        from .__init__ import storage
-        storage.new(self)
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """Returns a dictionary containing all keys/values of __dict__

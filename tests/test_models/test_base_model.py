@@ -2,10 +2,9 @@
 """Defines unittest for base_model.py
 
 Unittest classes:
-    TestBaseModel_instantiation - line
-    TestBaseModel_save - line
-    TestBaseModel_to_dict - line
-    TestBaseModel__str__ - line
+    TestBaseModel_instantiation - line 16
+    TestBaseModel_save - line 68
+    TestBaseModel_to_dict - line 100
 """
 import unittest
 import re
