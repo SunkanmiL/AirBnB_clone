@@ -60,7 +60,7 @@ class FileStorage:
                 my_dict = json.load(f)
                 for key, value in my_dict.items():
                     if (value['__class__'] == 'Amenity'):
-                            FileStorage.__objects[key] = Amenity(**value)
+                        FileStorage.__objects[key] = Amenity(**value)
                     elif (value['__class__'] == 'BaseModel'):
                         FileStorage.__objects[key] = BaseModel(**value)
                     elif (value['__class__'] == 'City'):
@@ -72,6 +72,6 @@ class FileStorage:
                     elif (value['__class__'] == 'State'):
                         FileStorage.__objects[key] = State(**value)
                     elif (value['__class__'] == 'User'):
-                        FileStorage.__objects[key] = User(**value)       
+                        FileStorage.__objects[key] = User(**value)
         except FileNotFoundError:
             return
