@@ -1,0 +1,44 @@
+.filters {
+  background-color: white;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+  height: 70px;
+  width: 100%;
+  position: relative;
+}
+.button {
+  background-color: #ff5a5f;
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  font-size: 18px;
+  height: 48px;
+  width: 20%;
+  margin: 11px 0;
+  margin-right: 30px;
+  vertical-align: middle;
+}
+.locations,
+.amenities {
+  display: inline-block;
+  height: 100%;
+  width: 25%;
+  margin-left: 30px;
+  /* vertical-align: middle; */
+}
+.locations {
+  border-right: 1px solid #dddddd;
+}
+.locations h3,
+.amenities h3 {
+  font-weight: 600;
+  margin: 13px 0 2px;
+}
+.locations h4,
+.amenities h4 {
+  font-weight: 400;
+  font: 400 14px;
+  margin: 2px 0 13px;
+}
