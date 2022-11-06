@@ -4,6 +4,17 @@
   border-radius: 4px;
   height: 70px;
   width: 100%;
-  position: flex;
+  display: flex;
   justify-content: right;
+}
+.button {
+  background-color: #ff5a5f;
+  border: 0;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 18px;
+  height: 48px;
+  width: 20%;
+  margin: 11px 0;
+  margin-right: 30px;
 }
