@@ -1,6 +1,5 @@
+/* Body style */
 body {
   margin: 0;
-}
-body div {
-  height: 76vh;
+  padding: 0;
 }
