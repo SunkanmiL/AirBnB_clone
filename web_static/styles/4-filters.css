@@ -17,10 +17,9 @@
   font-size: 18px;
   height: 48px;
   width: 20%;
-  margin-top: 12px;
+  margin: 12px 30px;
   position: absolute;
   left: 80%;
-  transform: translateX(-30px);
 }
 
 /* Search button hover opacity */
