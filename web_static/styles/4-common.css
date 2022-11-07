@@ -1,20 +1,19 @@
+/* Body style */
 body {
   color: #484848;
-  font: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  size: 14px;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  margin: 0px;
+  padding: 0px;
 }
 
+/* Container style */
 .container {
-  max-width: 1000px;
   margin: 30px auto;
-  padding: 0 3%;
-  /* text-align: center; */
+  max-width: 1000px;
 }
-.button:hover {
-  opacity: 90%;
-}
-.body-div {
-  height: 80vh;
+
+/* Strong style */
+strong {
+  font-weight: bold;
 }
