@@ -40,8 +40,8 @@
 /* Guests, rooms, and bathrooms information */
 .places .information {
   align-items: center;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #dddddd;
+  border-bottom: 1px solid #dddddd;
   display: flex;
   flex-direction: row;
   height: 80px;
@@ -52,12 +52,13 @@
 /* Width of each guest/room/bathroom sticker */
 .places .max_guest,
 .places .number_rooms,
-.places .number_bathrooms{
+.places .number_bathrooms {
   width: 100px;
 }
 
-/* Padding around owner */
-.places .user {
+/* Padding around owner and description*/
+.places .user,
+.places .description {
   margin: 20px auto 20px auto;
 }
 
@@ -111,7 +112,7 @@
 /* Amenities and reviews header 2 style */
 .places .amenities h2,
 .places .reviews h2 {
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #dddddd;
   font-size: 16px;
   font-weight: bold;
   padding-bottom: 10px;
@@ -122,6 +123,12 @@
 .places .reviews h3 {
   font-size: 14px;
   font-weight: bold;
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+.places .reviews p {
+  font-size: 12px;
+  font-weight: normal;
   margin-bottom: 6px;
   margin-top: 20px;
 }
