@@ -8,6 +8,24 @@
   border-radius: 4px;
 }
 
+/*
+ * --- Contain search button float ---
+ */
+
+.filters:before,
+.filters:after {
+  content: "";
+  display: table;
+}
+
+.filters:after {
+  clear: both;
+}
+
+.filters {
+  *zoom: 1;
+}
+
 /* Search button style */
 .filters button {
   background: #ff5a5f;
@@ -26,15 +44,6 @@
 /* Search button hover opacity */
 .filters button:hover {
   opacity: 0.9;
-}
-
-/* Locations and amenities style */
-.filters .locations,
-.filters .amenities {
-  display: inline-block;
-  height: 100%;
-  position: relative;
-  width: 25%;
 }
 
 /* Locations and amenities style */
